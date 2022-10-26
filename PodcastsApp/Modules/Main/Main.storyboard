@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="VK5-ty-PSJ">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="03o-Az-9cF">
+            <objects>
+                <tabBarController id="VK5-ty-PSJ" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="q0t-KH-jgg">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="MRd-Nv-nbC" kind="relationship" relationship="viewControllers" id="FGt-XL-vj1"/>
+                        <segue destination="WYt-m2-uG3" kind="relationship" relationship="viewControllers" id="pna-iW-Chf"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3mR-fr-iAV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1098" y="-91"/>
+        </scene>
+        <!--Root Podcast-->
+        <scene sceneID="Nq0-SR-bIk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Podcast" referencedIdentifier="Root Podcast" id="MRd-Nv-nbC" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="8HF-oY-gGy"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QvD-VS-75Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-414" y="-151"/>
+        </scene>
+        <!--Root Favorite-->
+        <scene sceneID="iro-rH-evY">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Favorite" referencedIdentifier="Root Favorite" id="WYt-m2-uG3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="7mm-Mb-mws"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7MS-hZ-wcC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-420" y="3"/>
+        </scene>
+    </scenes>
+</document>
