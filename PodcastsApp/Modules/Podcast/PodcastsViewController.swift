@@ -15,11 +15,25 @@ class PodcastsViewController: BaseViewController {
     
     let viewModel = PodcastsViewModel()
     
+    func getCoreDataDBPath() {
+        let path = FileManager
+            .default
+            .urls(for: .applicationSupportDirectory, in: .userDomainMask)
+            .last?
+            .absoluteString
+            .replacingOccurrences(of: "file://", with: "")
+            .removingPercentEncoding
+
+         print("--- Core Data DB Path :: \(path ?? "Not found")")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setup()
+        
+        getCoreDataDBPath()
     }
     
     func setup() {
@@ -88,5 +102,34 @@ extension PodcastsViewController: UITableViewDataSource {
 extension PodcastsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let index = indexPath.row
+        let isFavorited = viewModel.isFavorited(at: index)
+        let title = isFavorited ? "Unfavorite" : "Favorite"
+        
+        let favorite = UIContextualAction(style: .normal, title: title, handler: { (_, _, completion) in
+            if isFavorited {
+                self.viewModel.deleteFavorite(at: index)
+            }
+            else {
+                self.viewModel.addToFavorite(at: index)
+            }
+            completion(true)
+        })
+        
+        if isFavorited {
+            favorite.image = UIImage(systemName: "star.slash.fill")
+            favorite.backgroundColor = UIColor.systemRed
+        }
+        else {
+            favorite.image = UIImage(systemName: "star.fill")
+            favorite.backgroundColor = UIColor.systemYellow
+        }
+        
+        let actions = UISwipeActionsConfiguration(actions: [favorite])
+        return actions
     }
 }

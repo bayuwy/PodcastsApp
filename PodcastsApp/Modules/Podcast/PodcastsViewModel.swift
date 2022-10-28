@@ -5,7 +5,7 @@
 //  Created by Bayu Yasaputro on 26/10/22.
 //
 
-import Foundation
+import UIKit
 
 class PodcastsViewModel {
     private var podcasts: [Podcast] = []
@@ -48,4 +48,21 @@ class PodcastsViewModel {
     func podcast(at index: Int) -> Podcast {
         return podcasts[index]
     }
+    
+    func addToFavorite(at index: Int) {
+        let podcast = podcasts[index]
+        DPodcast.save(podcast, at: viewContext)
+    }
+     
+    func deleteFavorite(at index: Int) {
+        let podcast = podcasts[index]
+        DPodcast.delete(trackId: podcast.trackId, at: viewContext)
+    }
+    
+    func isFavorited(at index: Int) -> Bool {
+        let podcast = podcasts[index]
+        return DPodcast.fetch(trackId: podcast.trackId, at: viewContext) != nil
+    }
 }
+
+extension PodcastsViewModel: ManagedObjectContextGetter { }

@@ -31,5 +31,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "PodcastsApp")
+        container.loadPersistentStores { (description, error) in
+            if let error = error as? NSError {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        }
+        return container
+    }()
+    
+    var viewContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
+    func saveContext() {
+        if viewContext.hasChanges {
+            do {
+                try viewContext.save()
+            }
+            catch {
+                let err = error as NSError
+                fatalError("Unresolved error \(err), \(err.userInfo)")
+            }
+        }
+    }
 }
 
+protocol ManagedObjectContextGetter { }
+extension ManagedObjectContextGetter {
+    var viewContext: NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.viewContext
+    }
+}
