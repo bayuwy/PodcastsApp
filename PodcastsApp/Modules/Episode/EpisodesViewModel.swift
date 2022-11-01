@@ -20,6 +20,21 @@ class EpisodesViewModel {
         return podcast.trackName
     }
     
+    func loadEpisodes(completion: @escaping (Result<Void, Error>) -> Void) {
+        APIService.shared.fetchEpisodes(feedUrl: podcast.feedUrl) { [weak self] (result) in
+            guard let safeSelf = self else { return }
+            switch result {
+            case .success(let episodes):
+                safeSelf.episodes = episodes
+                safeSelf.filteredEpisodes = episodes
+                completion(.success(()))
+                
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     func searchEpisodes(q: String, completion: (Result<Void, Error>) -> Void) {
         
     }
@@ -39,16 +54,16 @@ extension EpisodesViewModel {
     }
     
     func episodePubDate(at index: Int) -> String {
-        let date = filteredEpisodes[index].pubDate
+        let date = filteredEpisodes[index].publishDate
         return date.description
     }
     
     func episodeTitle(at index: Int) -> String {
-        return filteredEpisodes[index].title
+        return filteredEpisodes[index].epTitle
     }
     
     func episodeDescription(at index: Int) -> String {
-        return filteredEpisodes[index].description
+        return filteredEpisodes[index].epDescription
     }
     
     func episode(at index: Int) -> Episode {

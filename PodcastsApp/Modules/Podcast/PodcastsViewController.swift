@@ -102,6 +102,8 @@ extension PodcastsViewController: UITableViewDataSource {
 extension PodcastsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        showEpisodesViewController(podcast: viewModel.podcast(at: indexPath.row))
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

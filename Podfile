@@ -8,5 +8,6 @@ target 'PodcastsApp' do
   # Pods for PodcastsApp
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'FeedKit', '~> 9.0'
   
 end

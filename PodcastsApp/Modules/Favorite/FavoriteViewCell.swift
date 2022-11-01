@@ -8,7 +8,7 @@
 import UIKit
 
 class FavoriteViewCell: UICollectionViewCell {
-    @IBOutlet weak var thubImageView: UIImageView!
+    @IBOutlet weak var thumbImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     

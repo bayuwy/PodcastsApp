@@ -18,6 +18,7 @@ class EpisodesViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         setup()
+        loadEpisodes()
     }
     
     func setup() {
@@ -30,6 +31,12 @@ class EpisodesViewController: BaseViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
         searchController.searchBar.delegate = self
+    }
+    
+    func loadEpisodes() {
+        viewModel.loadEpisodes { [weak self] (_) in
+            self?.tableView.reloadData()
+        }
     }
     
     func searchEpisodes(q: String) {
@@ -93,6 +100,8 @@ extension EpisodesViewController: UITableViewDataSource {
 extension EpisodesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        presentPlayerViewController(episode: viewModel.episode(at: indexPath.row))
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -106,5 +115,15 @@ extension EpisodesViewController: UITableViewDelegate {
         
         let actions = UISwipeActionsConfiguration(actions: [favorite])
         return actions
+    }
+}
+
+extension UIViewController {
+    func showEpisodesViewController(podcast: Podcast) {
+        let viewController = UIStoryboard(name: "Episode", bundle: nil)
+            .instantiateViewController(withIdentifier: "episodes") as! EpisodesViewController
+        viewController.viewModel = EpisodesViewModel(podcast: podcast)
+        
+        navigationController?.pushViewController(viewController, animated: true)
     }
 }

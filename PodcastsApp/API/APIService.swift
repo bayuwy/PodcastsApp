@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import FeedKit
 
 class APIService: Service {
     static let shared = APIService()
@@ -57,5 +58,26 @@ class APIService: Service {
                     completion(.failure(error))
                 }
             })
+    }
+    
+    func fetchEpisodes(feedUrl: String, completion: @escaping (Result<[Episode], Error>) -> Void) {
+        if let url = URL(string: feedUrl) {
+            let parser = FeedParser(URL: url)
+            parser.parseAsync { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let feed):
+                        let episodes: [Episode] = feed.rssFeed?.items ?? []
+                        completion(.success(episodes))
+                    case .failure(let error):
+                        completion(.failure(error))
+                    }
+                }
+            }
+        }
+        else {
+            let error = NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid feed URL"])
+            completion(.failure(error))
+        }
     }
 }

@@ -13,11 +13,17 @@ class FavoritesViewController: BaseViewController {
     private let inset: CGFloat = 20
     private let spacing: CGFloat = 12
     
+    let viewModel = FavoritesViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setup()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadPodcasts), name: NSNotification.Name.favorites, object: nil)
+        
+        loadPodcasts()
     }
     
     func setup() {
@@ -31,16 +37,35 @@ class FavoritesViewController: BaseViewController {
         collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionView.collectionViewLayout = collectionViewLayout
     }
+    
+    @objc func loadPodcasts() {
+        viewModel.loadPodcasts { (_) in
+            self.collectionView.reloadData()
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
 extension FavoritesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel.numberOfPodcasts
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "favoriteCellId", for: indexPath) as! FavoriteViewCell
+        
+        let index = indexPath.row
+        cell.nameLabel.text = viewModel.podcastTrackName(at: index)
+        cell.artistLabel.text = viewModel.podcastArtistName(at: index)
+        cell.thumbImageView.kf.setImage(with: URL(string: viewModel.podcastImagUrl(at: index))) { (result) in
+            switch result {
+            case.success:
+                cell.thumbImageView.contentMode = .scaleAspectFill
+            case .failure:
+                cell.thumbImageView.contentMode = .center
+                cell.thumbImageView.image = UIImage(systemName: "photo")
+            }
+        }
         
         let width = floor((UIScreen.main.bounds.width - (inset * 2) - spacing) / 2)
         cell.widthConstraint.constant = width
@@ -54,5 +79,6 @@ extension FavoritesViewController: UICollectionViewDataSource {
 extension FavoritesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        showEpisodesViewController(podcast: viewModel.podcast(at: indexPath.item))
     }
 }

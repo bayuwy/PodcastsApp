@@ -79,7 +79,7 @@
                                         <connections>
                                             <outlet property="artistLabel" destination="75q-od-8VC" id="MPk-3u-clf"/>
                                             <outlet property="nameLabel" destination="50t-s2-Yba" id="Mv6-L9-oM5"/>
-                                            <outlet property="thubImageView" destination="Xc3-6x-0AA" id="d97-QN-nc5"/>
+                                            <outlet property="thumbImageView" destination="Xc3-6x-0AA" id="d97-QN-nc5"/>
                                             <outlet property="widthConstraint" destination="d61-UF-DDq" id="Y4u-5L-PqN"/>
                                         </connections>
                                     </collectionViewCell>

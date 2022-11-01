@@ -17,11 +17,6 @@ class MainViewController: UITabBarController {
         setup()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        showPlayerView()
-    }
-    
     func setup() {
         let playerView = PlayerView(frame: .zero)
         view.addSubview(playerView)

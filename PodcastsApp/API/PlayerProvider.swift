@@ -98,7 +98,7 @@ class PlayerProvider: NSObject {
             return
         }
         self.podcastNowPlayingInfo[MPMediaItemPropertyTitle] = episode.epTitle
-        self.podcastNowPlayingInfo[MPMediaItemPropertyArtist] = episode.author
+        self.podcastNowPlayingInfo[MPMediaItemPropertyArtist] = episode.epAuthor
         self.podcastNowPlayingInfo[MPMediaItemPropertyAlbumTitle] = ""
         self.podcastNowPlayingInfo[MPMediaItemPropertyArtwork] = artwork
         self.podcastNowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = self.podcastPlayer.rate

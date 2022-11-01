@@ -33,6 +33,8 @@ public class DPodcast: NSManagedObject {
         entity.isFavorited = true
         
         try? context.save()
+        
+        NotificationCenter.default.post(name: .favorites, object: nil)
     }
     
     class func fetch(in context: NSManagedObjectContext) -> [Podcast] {
@@ -54,6 +56,8 @@ public class DPodcast: NSManagedObject {
             entity.isFavorited = false
             
             try? context.save()
+            
+            NotificationCenter.default.post(name: .favorites, object: nil)
         }
     }
 }
