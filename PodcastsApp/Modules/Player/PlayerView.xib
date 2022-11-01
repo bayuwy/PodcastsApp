@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerView" customModule="PodcastsApp" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="3DG-oN-WKE" id="wyQ-jO-jgX"/>
+                <outlet property="forwardButton" destination="dny-mw-iFh" id="z7b-Dd-4LF"/>
+                <outlet property="imageView" destination="K6m-dC-ceR" id="8dV-CR-zNF"/>
+                <outlet property="playButton" destination="R5e-PU-O4D" id="YyB-Ix-Elc"/>
+                <outlet property="rewindButton" destination="lxF-x6-G0n" id="Eec-7r-YaH"/>
+                <outlet property="titleLabel" destination="Nbk-21-qnZ" id="iru-YM-Eyn"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="3DG-oN-WKE">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="K6m-dC-ceR">
+                    <rect key="frame" x="12" y="13.666666666666664" width="48" height="45"/>
+                    <color key="backgroundColor" systemColor="systemFillColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="48" id="B52-YG-yeD"/>
+                        <constraint firstAttribute="height" constant="48" id="JKE-bF-a6b"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nbk-21-qnZ">
+                    <rect key="frame" x="72" y="27" width="170" height="18"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="kK4-3z-wD3">
+                    <rect key="frame" x="258" y="24" width="120" height="24"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lxF-x6-G0n">
+                            <rect key="frame" x="0.0" y="0.0" width="32" height="24"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="backward.fill" catalog="system"/>
+                            <connections>
+                                <action selector="rewindButtonTapped:" destination="-1" eventType="touchUpInside" id="7ii-2R-Lhy"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5e-PU-O4D">
+                            <rect key="frame" x="48" y="0.0" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="tP1-mv-R6G"/>
+                                <constraint firstAttribute="height" constant="24" id="xOx-X3-YGj"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="play.fill" catalog="system"/>
+                            <connections>
+                                <action selector="playButtonTapped:" destination="-1" eventType="touchUpInside" id="e1U-pS-Xsw"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dny-mw-iFh">
+                            <rect key="frame" x="88" y="0.0" width="32" height="24"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="forward.fill" catalog="system"/>
+                            <connections>
+                                <action selector="forwardButtonTapped:" destination="-1" eventType="touchUpInside" id="PNC-av-xWc"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="gTE-6S-y7r"/>
+            <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="Nbk-21-qnZ" firstAttribute="centerY" secondItem="K6m-dC-ceR" secondAttribute="centerY" id="5Tx-rt-T8y"/>
+                <constraint firstAttribute="trailing" secondItem="kK4-3z-wD3" secondAttribute="trailing" constant="12" id="6Qo-Tj-15h"/>
+                <constraint firstItem="kK4-3z-wD3" firstAttribute="leading" secondItem="Nbk-21-qnZ" secondAttribute="trailing" constant="16" id="EXW-yD-pls"/>
+                <constraint firstItem="Nbk-21-qnZ" firstAttribute="leading" secondItem="K6m-dC-ceR" secondAttribute="trailing" constant="12" id="FsC-qF-cm6"/>
+                <constraint firstAttribute="bottom" secondItem="K6m-dC-ceR" secondAttribute="bottom" priority="250" constant="12" id="JZb-6a-LLf"/>
+                <constraint firstItem="K6m-dC-ceR" firstAttribute="leading" secondItem="gTE-6S-y7r" secondAttribute="leading" constant="12" id="USC-CO-R8x"/>
+                <constraint firstItem="kK4-3z-wD3" firstAttribute="centerY" secondItem="K6m-dC-ceR" secondAttribute="centerY" id="au4-qq-U1S"/>
+                <constraint firstItem="K6m-dC-ceR" firstAttribute="top" secondItem="3DG-oN-WKE" secondAttribute="top" constant="12" id="ccW-xk-D9u"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="oCY-r5-ISM" appends="YES" id="sFu-G0-agr"/>
+            </connections>
+            <point key="canvasLocation" x="110.76923076923076" y="-636.96682464454977"/>
+        </view>
+        <tapGestureRecognizer id="oCY-r5-ISM">
+            <connections>
+                <action selector="viewTapped:" destination="-1" id="yey-U3-ehc"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="backward.fill" catalog="system" width="128" height="77"/>
+        <image name="forward.fill" catalog="system" width="128" height="77"/>
+        <image name="photo" catalog="system" width="128" height="93"/>
+        <image name="play.fill" catalog="system" width="117" height="128"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
