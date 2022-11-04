@@ -63,20 +63,32 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEx-B5-Jym">
+                                                    <rect key="frame" x="20" y="12" width="100" height="100"/>
+                                                    <color key="backgroundColor" systemColor="secondarySystemFillColor"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="eEx-B5-Jym" firstAttribute="trailing" secondItem="GZZ-HY-lay" secondAttribute="trailing" id="0lQ-4Q-fpz"/>
                                                 <constraint firstItem="GZZ-HY-lay" firstAttribute="leading" secondItem="KOd-E5-i5U" secondAttribute="leading" constant="20" symbolic="YES" id="Ij9-Ns-Wn7"/>
                                                 <constraint firstItem="Mvf-9y-DDC" firstAttribute="top" secondItem="GZZ-HY-lay" secondAttribute="top" id="MM5-AL-TKe"/>
                                                 <constraint firstAttribute="trailing" secondItem="Mvf-9y-DDC" secondAttribute="trailing" constant="20" id="MtF-Ye-gtT"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Mvf-9y-DDC" secondAttribute="bottom" constant="12" id="NuO-4z-PoE"/>
                                                 <constraint firstAttribute="bottom" secondItem="GZZ-HY-lay" secondAttribute="bottom" priority="250" constant="12" id="R9X-Ef-xBS"/>
                                                 <constraint firstItem="Mvf-9y-DDC" firstAttribute="leading" secondItem="GZZ-HY-lay" secondAttribute="trailing" constant="16" id="Ukf-Tf-zg6"/>
+                                                <constraint firstItem="eEx-B5-Jym" firstAttribute="top" secondItem="GZZ-HY-lay" secondAttribute="top" id="VjX-Vm-LWV"/>
+                                                <constraint firstItem="eEx-B5-Jym" firstAttribute="leading" secondItem="GZZ-HY-lay" secondAttribute="leading" id="c83-oV-h8L"/>
                                                 <constraint firstItem="GZZ-HY-lay" firstAttribute="top" secondItem="KOd-E5-i5U" secondAttribute="top" constant="12" id="qf4-WD-4wY"/>
+                                                <constraint firstItem="eEx-B5-Jym" firstAttribute="bottom" secondItem="GZZ-HY-lay" secondAttribute="bottom" id="tmd-Ks-Pwg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="XoT-rw-QUk" id="F8p-q0-nnb"/>
                                             <outlet property="descriptionLabel" destination="Psj-Y5-8BW" id="2En-DN-KMI"/>
+                                            <outlet property="progressLabel" destination="eEx-B5-Jym" id="dao-1d-2Zk"/>
                                             <outlet property="thumbImageView" destination="GZZ-HY-lay" id="HTd-RS-wX8"/>
                                             <outlet property="titleLabel" destination="ZZj-eS-Vei" id="oZy-gs-yTK"/>
                                         </connections>
@@ -128,6 +140,9 @@
         <image name="photo" catalog="system" width="128" height="93"/>
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="secondarySystemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -39,7 +39,6 @@
 		3AE8BCCF2914F9AB00AE1BFE /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8BCCE2914F9AB00AE1BFE /* DownloadsViewController.swift */; };
 		3AE8BCD12914F9CC00AE1BFE /* DownloadViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8BCD02914F9CC00AE1BFE /* DownloadViewCell.swift */; };
 		3AE8BCD32914F9E100AE1BFE /* DownloadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8BCD22914F9E100AE1BFE /* DownloadViewModel.swift */; };
-		3AE8BCD52914FDA200AE1BFE /* UserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8BCD42914FDA200AE1BFE /* UserDefaultsExtensions.swift */; };
 		3AEF9A492910D90000CE67A8 /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEF9A482910D90000CE67A8 /* EpisodesViewModel.swift */; };
 		3AEF9A4B2910D98000CE67A8 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEF9A4A2910D98000CE67A8 /* Episode.swift */; };
 		3AEF9A4D2910DD3100CE67A8 /* EpisodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEF9A4C2910DD3100CE67A8 /* EpisodeViewCell.swift */; };
@@ -85,7 +84,6 @@
 		3AE8BCCE2914F9AB00AE1BFE /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 		3AE8BCD02914F9CC00AE1BFE /* DownloadViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewCell.swift; sourceTree = "<group>"; };
 		3AE8BCD22914F9E100AE1BFE /* DownloadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewModel.swift; sourceTree = "<group>"; };
-		3AE8BCD42914FDA200AE1BFE /* UserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		3AEF9A482910D90000CE67A8 /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
 		3AEF9A4A2910D98000CE67A8 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		3AEF9A4C2910DD3100CE67A8 /* EpisodeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewCell.swift; sourceTree = "<group>"; };
@@ -126,7 +124,6 @@
 			children = (
 				3A66A63D2911504100996F33 /* NotificationExtensions.swift */,
 				3A66A6432911649A00996F33 /* DoubleExtensions.swift */,
-				3AE8BCD42914FDA200AE1BFE /* UserDefaultsExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -411,7 +408,6 @@
 				3AA019912908F21D0037EFC6 /* APIService.swift in Sources */,
 				3AA2E415290C0D37000221E1 /* PodcastsApp.xcdatamodeld in Sources */,
 				3AE8BCD32914F9E100AE1BFE /* DownloadViewModel.swift in Sources */,
-				3AE8BCD52914FDA200AE1BFE /* UserDefaultsExtensions.swift in Sources */,
 				3A26326F290918C30051F21D /* PodcastViewCell.swift in Sources */,
 				3A16DC9929090F4F004D53B7 /* FavoritesViewController.swift in Sources */,
 				3A26326D290914820051F21D /* PodcastsViewModel.swift in Sources */,
