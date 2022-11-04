@@ -38,7 +38,10 @@
 		3AE8BCCD2914F97B00AE1BFE /* Download.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE8BCCC2914F97B00AE1BFE /* Download.storyboard */; };
 		3AE8BCCF2914F9AB00AE1BFE /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8BCCE2914F9AB00AE1BFE /* DownloadsViewController.swift */; };
 		3AE8BCD12914F9CC00AE1BFE /* DownloadViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8BCD02914F9CC00AE1BFE /* DownloadViewCell.swift */; };
-		3AE8BCD32914F9E100AE1BFE /* DownloadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8BCD22914F9E100AE1BFE /* DownloadViewModel.swift */; };
+		3AE8BCD32914F9E100AE1BFE /* DownloadsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8BCD22914F9E100AE1BFE /* DownloadsViewModel.swift */; };
+		3AE8BCD92915493C00AE1BFE /* DownloadedEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8BCD82915493C00AE1BFE /* DownloadedEpisode.swift */; };
+		3AE8BCDB29154C6300AE1BFE /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8BCDA29154C6300AE1BFE /* UserDefaultsExtension.swift */; };
+		3AE8BCDD291560D200AE1BFE /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE8BCDC291560D200AE1BFE /* DateExtensions.swift */; };
 		3AEF9A492910D90000CE67A8 /* EpisodesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEF9A482910D90000CE67A8 /* EpisodesViewModel.swift */; };
 		3AEF9A4B2910D98000CE67A8 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEF9A4A2910D98000CE67A8 /* Episode.swift */; };
 		3AEF9A4D2910DD3100CE67A8 /* EpisodeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEF9A4C2910DD3100CE67A8 /* EpisodeViewCell.swift */; };
@@ -83,7 +86,10 @@
 		3AE8BCCC2914F97B00AE1BFE /* Download.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Download.storyboard; sourceTree = "<group>"; };
 		3AE8BCCE2914F9AB00AE1BFE /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
 		3AE8BCD02914F9CC00AE1BFE /* DownloadViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewCell.swift; sourceTree = "<group>"; };
-		3AE8BCD22914F9E100AE1BFE /* DownloadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadViewModel.swift; sourceTree = "<group>"; };
+		3AE8BCD22914F9E100AE1BFE /* DownloadsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewModel.swift; sourceTree = "<group>"; };
+		3AE8BCD82915493C00AE1BFE /* DownloadedEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedEpisode.swift; sourceTree = "<group>"; };
+		3AE8BCDA29154C6300AE1BFE /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		3AE8BCDC291560D200AE1BFE /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		3AEF9A482910D90000CE67A8 /* EpisodesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesViewModel.swift; sourceTree = "<group>"; };
 		3AEF9A4A2910D98000CE67A8 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
 		3AEF9A4C2910DD3100CE67A8 /* EpisodeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeViewCell.swift; sourceTree = "<group>"; };
@@ -124,6 +130,8 @@
 			children = (
 				3A66A63D2911504100996F33 /* NotificationExtensions.swift */,
 				3A66A6432911649A00996F33 /* DoubleExtensions.swift */,
+				3AE8BCDA29154C6300AE1BFE /* UserDefaultsExtension.swift */,
+				3AE8BCDC291560D200AE1BFE /* DateExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -168,6 +176,7 @@
 			children = (
 				3AA5C50D29092D6D001B0EB9 /* Podcast.swift */,
 				3AEF9A4A2910D98000CE67A8 /* Episode.swift */,
+				3AE8BCD82915493C00AE1BFE /* DownloadedEpisode.swift */,
 				3AA5C50F29092E1B001B0EB9 /* Service.swift */,
 			);
 			path = Models;
@@ -243,7 +252,7 @@
 			children = (
 				3AE8BCCC2914F97B00AE1BFE /* Download.storyboard */,
 				3AE8BCCE2914F9AB00AE1BFE /* DownloadsViewController.swift */,
-				3AE8BCD22914F9E100AE1BFE /* DownloadViewModel.swift */,
+				3AE8BCD22914F9E100AE1BFE /* DownloadsViewModel.swift */,
 				3AE8BCD02914F9CC00AE1BFE /* DownloadViewCell.swift */,
 			);
 			path = Download;
@@ -404,10 +413,12 @@
 				3AE8BCCF2914F9AB00AE1BFE /* DownloadsViewController.swift in Sources */,
 				3A0D7F902910D57800688DD2 /* EpisodesViewController.swift in Sources */,
 				3AEF9A542910E89A00CE67A8 /* PlayerView.swift in Sources */,
+				3AE8BCD92915493C00AE1BFE /* DownloadedEpisode.swift in Sources */,
 				3AEF9A492910D90000CE67A8 /* EpisodesViewModel.swift in Sources */,
 				3AA019912908F21D0037EFC6 /* APIService.swift in Sources */,
 				3AA2E415290C0D37000221E1 /* PodcastsApp.xcdatamodeld in Sources */,
-				3AE8BCD32914F9E100AE1BFE /* DownloadViewModel.swift in Sources */,
+				3AE8BCD32914F9E100AE1BFE /* DownloadsViewModel.swift in Sources */,
+				3AE8BCDB29154C6300AE1BFE /* UserDefaultsExtension.swift in Sources */,
 				3A26326F290918C30051F21D /* PodcastViewCell.swift in Sources */,
 				3A16DC9929090F4F004D53B7 /* FavoritesViewController.swift in Sources */,
 				3A26326D290914820051F21D /* PodcastsViewModel.swift in Sources */,
@@ -425,6 +436,7 @@
 				3AA0199829090D190037EFC6 /* MainViewController.swift in Sources */,
 				3A66A63B29114CC800996F33 /* FavoritesViewModel.swift in Sources */,
 				3A66A6442911649A00996F33 /* DoubleExtensions.swift in Sources */,
+				3AE8BCDD291560D200AE1BFE /* DateExtensions.swift in Sources */,
 				3AA0197A2908326F0037EFC6 /* SceneDelegate.swift in Sources */,
 				3A66A6402911633700996F33 /* PlayerProvider.swift in Sources */,
 				3A66A63E2911504100996F33 /* NotificationExtensions.swift in Sources */,

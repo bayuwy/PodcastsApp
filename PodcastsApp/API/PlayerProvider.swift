@@ -51,7 +51,21 @@ class PlayerProvider: NSObject {
     }
     
     private func loadPodcast(episode: Episode, andPlay shouldPlay: Bool = true) {
-        guard let safeUrl = URL(string: episode.streamUrl) else {
+        var url: URL?
+        if let fileUrlString = episode.fileUrl, let fileUrl = URL(string: fileUrlString) {
+            let fileName = fileUrl.lastPathComponent
+            guard var trueLocation = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+                return
+            }
+            
+            trueLocation.appendPathComponent(fileName)
+            url = trueLocation
+        }
+        else {
+            url = URL(string: episode.streamUrl)
+        }
+        
+        guard let safeUrl = url else {
             return
         }
         self.podcastPlayer.replaceCurrentItem(with: AVPlayerItem(url: safeUrl))

@@ -15,6 +15,46 @@ class MainViewController: UITabBarController {
 
         // Do any additional setup after loading the view.
         setup()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.playerProviderStateDidChange(_:)),
+            name: .PlayerProviderStateDidChange,
+            object: nil
+        )
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.playerProviderNowPlayingInfoDidChange(_:)),
+            name: .PlayerProviderNowPlayingInfoDidChange,
+            object: nil
+        )
+    }
+    
+    @objc func playerProviderStateDidChange(_ sender: Notification) {
+        playerProviderNowPlayingInfoDidChange(sender)
+        
+        if playerView.isHidden {
+            showPlayerView()
+        }
+    }
+    
+    @objc func playerProviderNowPlayingInfoDidChange(_ sender: Notification) {
+        let playerProvider = PlayerProvider.shared
+        let episode = playerProvider.currentEpisode
+        
+        playerView.titleLabel.text = episode?.epTitle
+        let image = UIImage(systemName: playerProvider.isPodcastPlaying() ? "pause.fill" : "play.fill")
+        playerView.playButton.setImage(image, for: .normal)
+        playerView.imageView.kf.setImage(with: URL(string: episode?.imageUrl ?? "")) { (result) in
+            switch result {
+            case.success:
+                self.playerView.imageView.contentMode = .scaleAspectFill
+            case .failure:
+                self.playerView.imageView.contentMode = .center
+                self.playerView.imageView.image = UIImage(systemName: "photo")
+            }
+        }
     }
     
     func setup() {
@@ -52,18 +92,20 @@ class MainViewController: UITabBarController {
 // MARK: - PlayerViewDelegate
 extension MainViewController: PlayerViewDelegate {
     func playerViewPlayButtonTapped(_ view: PlayerView) {
-        
+        PlayerProvider.shared.podcastPlay()
     }
     
     func playerViewRewindButtonTapped(_ view: PlayerView) {
-        
+        PlayerProvider.shared.podcastRewind()
     }
     
     func playerViewForwardButtonTapped(_ view: PlayerView) {
-        
+        PlayerProvider.shared.podcastForward()
     }
     
     func playerViewTapped(_ view: PlayerView) {
-        
+        if let episode = PlayerProvider.shared.currentEpisode {
+            presentPlayerViewController(episode: episode)
+        }
     }
 }

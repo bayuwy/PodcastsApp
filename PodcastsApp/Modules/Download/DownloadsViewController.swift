@@ -11,7 +11,7 @@ class DownloadsViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
     
-    var viewModel: DownloadViewModel = DownloadViewModel()
+    var viewModel: DownloadsViewModel = DownloadsViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,36 @@ class DownloadsViewController: BaseViewController {
         // Do any additional setup after loading the view.
         setup()
         loadDownloads()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.downloadAddedHandler(_:)), name: .downloadAdded, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.downloadCompleteHandler(_:)), name: .downloadComplete, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.downloadProgressHandler(_:)), name: .downloadProgress, object: nil)
     }
+    
+    @objc func downloadAddedHandler(_ sender: Notification) {
+        loadDownloads()
+    }
+    
+    @objc func downloadCompleteHandler(_ sender: Notification) {
+        loadDownloads()
+    }
+    
+    @objc func downloadProgressHandler(_ sender: Notification) {
+        if let userInfo = sender.userInfo,
+           let streamUrl = userInfo["streamUrl"] as? String,
+           let progress = userInfo["progress"] as? Double {
+            
+            if let index = viewModel.episodeIndex(where: streamUrl),
+               let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? DownloadViewCell {
+                
+                cell.progressLabel.text = "\(Int(progress * 100))%"
+                cell.progressLabel.isHidden = progress == 1 ? true : false
+            }
+        }
+    }
+    
     
     func setup() {
         tableView.dataSource = self
@@ -48,13 +77,13 @@ class DownloadsViewController: BaseViewController {
 // MARK: - UISearchBarDelegate
 extension DownloadsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if let text = searchBar.text, text.count >= 3 {
+        if let text = searchBar.text {
             searchEpisodes(q: text)
         }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if let text = searchBar.text, text.count >= 3 {
+        if let text = searchBar.text {
             searchEpisodes(q: text)
         }
     }

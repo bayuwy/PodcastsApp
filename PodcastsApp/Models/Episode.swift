@@ -15,6 +15,8 @@ protocol Episode {
     var epAuthor: String { get }
     var streamUrl: String { get }
     var imageUrl: String { get }
+    
+    var fileUrl: String? { get }
 }
 
 extension RSSFeedItem: Episode {
@@ -40,5 +42,9 @@ extension RSSFeedItem: Episode {
     
     var imageUrl: String {
         return iTunes?.iTunesImage?.attributes?.href ?? ""
+    }
+    
+    var fileUrl: String? {
+        return nil
     }
 }

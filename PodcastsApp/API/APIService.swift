@@ -80,4 +80,36 @@ class APIService: Service {
             completion(.failure(error))
         }
     }
+    
+    func downloadEpisode(_ episode: Episode) {
+        let downloadRequest = DownloadRequest.suggestedDownloadDestination()
+        AF.download(episode.streamUrl, to: downloadRequest)
+            .downloadProgress { (progress) in
+                
+                NotificationCenter.default.post(
+                    name: .downloadProgress,
+                    object: nil,
+                    userInfo: [
+                        "streamUrl": episode.streamUrl,
+                        "progress": progress.fractionCompleted
+                    ]
+                )
+            }
+            .response { (response) in
+                var episodes = UserDefaults.standard.downloadedEpisodes()
+                if let index = episodes.firstIndex(where: { $0.streamUrl == episode.streamUrl }) {
+                    episodes[index].fileUrl = response.fileURL?.absoluteString
+                    
+                    do {
+                        let data = try JSONEncoder().encode(episodes)
+                        UserDefaults.standard.set(data, forKey: UserDefaults.downloadedEpisodesKey)
+                    }
+                    catch {
+                        print("Failed to encode: ", error)
+                    }
+                    
+                    NotificationCenter.default.post(name: .downloadComplete, object: nil)
+                }
+            }
+    }
 }

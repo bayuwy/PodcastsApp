@@ -40,7 +40,9 @@ class EpisodesViewModel {
     }
     
     func downloadEpisode(at index: Int, completion: (Result<Bool, Error>) -> Void) {
-        
+        let episode = episode(at: index)
+        UserDefaults.standard.downloadEpisode(episode)
+        APIService.shared.downloadEpisode(episode)
     }
 }
 
