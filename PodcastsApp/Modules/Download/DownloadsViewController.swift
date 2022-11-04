@@ -1,29 +1,27 @@
 //
-//  EpisodesViewController.swift
+//  DownloadsViewController.swift
 //  PodcastsApp
 //
-//  Created by Bayu Yasaputro on 01/11/22.
+//  Created by Bayu Yasaputro on 04/11/22.
 //
 
 import UIKit
 
-class EpisodesViewController: BaseViewController {
+class DownloadsViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
     
-    var viewModel: EpisodesViewModel!
+    var viewModel: DownloadViewModel = DownloadViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setup()
-        loadEpisodes()
+        loadDownloads()
     }
     
     func setup() {
-        title = viewModel.title
-        
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -33,8 +31,8 @@ class EpisodesViewController: BaseViewController {
         searchController.searchBar.delegate = self
     }
     
-    func loadEpisodes() {
-        viewModel.loadEpisodes { [weak self] (_) in
+    func loadDownloads() {
+        viewModel.loadDownloads { [weak self] (_) in
             self?.tableView.reloadData()
         }
     }
@@ -45,17 +43,10 @@ class EpisodesViewController: BaseViewController {
             self.tableView.reloadData()
         }
     }
-    
-    func downloadEposode(at index: Int) {
-        viewModel.downloadEpisode(at: index) { [weak self] (result) in
-            guard let `self` = self else { return }
-            
-        }
-    }
 }
 
 // MARK: - UISearchBarDelegate
-extension EpisodesViewController: UISearchBarDelegate {
+extension DownloadsViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let text = searchBar.text, text.count >= 3 {
             searchEpisodes(q: text)
@@ -70,13 +61,13 @@ extension EpisodesViewController: UISearchBarDelegate {
 }
 
 // MARK: - UITableViewDataSource
-extension EpisodesViewController: UITableViewDataSource {
+extension DownloadsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfEpisodes
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "episodeCellId", for: indexPath) as! EpisodeViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "downloadCellId", for: indexPath) as! DownloadViewCell
         
         let index = indexPath.row
         cell.dateLabel.text = viewModel.episodePubDate(at: index)
@@ -97,33 +88,10 @@ extension EpisodesViewController: UITableViewDataSource {
 }
 
 // MARK: - UITableViewDelegate
-extension EpisodesViewController: UITableViewDelegate {
+extension DownloadsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         presentPlayerViewController(episode: viewModel.episode(at: indexPath.row))
-    }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        
-        let favorite = UIContextualAction(style: .normal, title: "Download", handler: { (_, _, completion) in
-            self.downloadEposode(at: indexPath.row)
-            completion(true)
-        })
-        favorite.image = UIImage(systemName: "square.and.arrow.down.fill")
-        favorite.backgroundColor = UIColor.systemGreen
-        
-        let actions = UISwipeActionsConfiguration(actions: [favorite])
-        return actions
-    }
-}
-
-extension UIViewController {
-    func showEpisodesViewController(podcast: Podcast) {
-        let viewController = UIStoryboard(name: "Episode", bundle: nil)
-            .instantiateViewController(withIdentifier: "episodes") as! EpisodesViewController
-        viewController.viewModel = EpisodesViewModel(podcast: podcast)
-        
-        navigationController?.pushViewController(viewController, animated: true)
     }
 }

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Download-->
+        <scene sceneID="eFW-j4-4ad">
+            <objects>
+                <viewController storyboardIdentifier="episodes" id="p4l-Sl-NYc" customClass="DownloadsViewController" customModule="PodcastsApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iHg-fc-bwZ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="peE-zn-DDL">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="downloadCellId" rowHeight="124" id="t06-DD-9v2" customClass="DownloadViewCell" customModule="PodcastsApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="124"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t06-DD-9v2" id="KOd-E5-i5U">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="124"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GZZ-HY-lay">
+                                                    <rect key="frame" x="20" y="13.666666666666664" width="100" height="97"/>
+                                                    <color key="backgroundColor" systemColor="systemFillColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="100" id="ckT-2I-Zmy"/>
+                                                        <constraint firstAttribute="width" constant="100" id="cpX-W9-2sI"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Mvf-9y-DDC">
+                                                    <rect key="frame" x="136" y="12" width="237" height="62"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XoT-rw-QUk">
+                                                            <rect key="frame" x="0.0" y="0.0" width="237" height="18"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                            <color key="textColor" systemColor="systemPurpleColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZZj-eS-Vei">
+                                                            <rect key="frame" x="0.0" y="22" width="237" height="20.333333333333329"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Psj-Y5-8BW">
+                                                            <rect key="frame" x="0.0" y="46.333333333333336" width="237" height="15.666666666666664"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                            <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GZZ-HY-lay" firstAttribute="leading" secondItem="KOd-E5-i5U" secondAttribute="leading" constant="20" symbolic="YES" id="Ij9-Ns-Wn7"/>
+                                                <constraint firstItem="Mvf-9y-DDC" firstAttribute="top" secondItem="GZZ-HY-lay" secondAttribute="top" id="MM5-AL-TKe"/>
+                                                <constraint firstAttribute="trailing" secondItem="Mvf-9y-DDC" secondAttribute="trailing" constant="20" id="MtF-Ye-gtT"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Mvf-9y-DDC" secondAttribute="bottom" constant="12" id="NuO-4z-PoE"/>
+                                                <constraint firstAttribute="bottom" secondItem="GZZ-HY-lay" secondAttribute="bottom" priority="250" constant="12" id="R9X-Ef-xBS"/>
+                                                <constraint firstItem="Mvf-9y-DDC" firstAttribute="leading" secondItem="GZZ-HY-lay" secondAttribute="trailing" constant="16" id="Ukf-Tf-zg6"/>
+                                                <constraint firstItem="GZZ-HY-lay" firstAttribute="top" secondItem="KOd-E5-i5U" secondAttribute="top" constant="12" id="qf4-WD-4wY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="XoT-rw-QUk" id="F8p-q0-nnb"/>
+                                            <outlet property="descriptionLabel" destination="Psj-Y5-8BW" id="2En-DN-KMI"/>
+                                            <outlet property="thumbImageView" destination="GZZ-HY-lay" id="HTd-RS-wX8"/>
+                                            <outlet property="titleLabel" destination="ZZj-eS-Vei" id="oZy-gs-yTK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ynd-Ly-T50"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="peE-zn-DDL" secondAttribute="bottom" id="2jc-cq-6JG"/>
+                            <constraint firstItem="peE-zn-DDL" firstAttribute="leading" secondItem="ynd-Ly-T50" secondAttribute="leading" id="bKF-2L-jeW"/>
+                            <constraint firstItem="peE-zn-DDL" firstAttribute="top" secondItem="iHg-fc-bwZ" secondAttribute="top" id="gRJ-EU-abh"/>
+                            <constraint firstItem="peE-zn-DDL" firstAttribute="trailing" secondItem="ynd-Ly-T50" secondAttribute="trailing" id="lXQ-M0-XTq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Download" id="evB-51-wd1"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="tableView" destination="peE-zn-DDL" id="fZ3-zZ-Ire"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pgd-X5-TAu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1057.2519083969464" y="-34.507042253521128"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="NlT-YT-9Dd">
+            <objects>
+                <navigationController storyboardIdentifier="Root Download" automaticallyAdjustsScrollViewInsets="NO" id="iSn-yQ-fG1" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="downloads" id="Mcs-if-6nT"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="U6b-Ry-0Xa">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="p4l-Sl-NYc" kind="relationship" relationship="rootViewController" id="S0S-nF-eqc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nfc-mi-LJy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.53435114503816" y="-34.507042253521128"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="photo" catalog="system" width="128" height="93"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
